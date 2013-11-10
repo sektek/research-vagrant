@@ -7,6 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :server1 do |server|
     server.vm.box = 'precise64'
+    server.vm.hostname = 'server1'
+
     server.vm.provision :shell, :inline => 'apt-get update'
 
     server.vm.provision :chef_solo do |chef|
@@ -23,5 +25,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :server2 do |server|
     server.vm.box = 'precise64'
+    server.vm.hostname = 'server2'
   end
 end
